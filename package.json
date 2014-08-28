@@ -1,0 +1,56 @@
+{
+    "author": "Steven J. Anderson <steven@SJAnderson.org>",
+    "dependencies": {
+        "async": "0.9.x",
+        "body-parser": "1.6.x",
+        "cson": "1.6.x",
+        "express": "4.8.x",
+        "mongodb": "1.4.x",
+        "morgan": "1.2.x",
+        "request": "2.39.x",
+        "xml2js": "0.4.x"
+    },
+    "description": "Bike Share API for all Bike Shares.",
+    "devDependencies": {
+        "coffee-script": "1.8.x",
+        "cson": "1.6.x"
+    },
+    "keywords": [
+        "aspen",
+        "barclay's cycle hire",
+        "bay area bike share",
+        "bay area",
+        "bike share",
+        "bixi",
+        "boston",
+        "capital bike share",
+        "capital bixi",
+        "chattanooga",
+        "chicago divvy bikes",
+        "citi bike",
+        "cogo bike share",
+        "columnus",
+        "divvy bikes",
+        "hubway",
+        "london",
+        "melbourne",
+        "minneapolis",
+        "montreal",
+        "new york citi bike",
+        "nice ride",
+        "ottawa",
+        "toronto",
+        "washington d.c.",
+        "WE-cycle"
+    ],
+    "license": "MIT",
+    "main": "app.js",
+    "name": "allbikes",
+    "readmeFilename": "README.md",
+    "repository": "https://github.com/SJAnderson/allbikes",
+    "scripts": {
+        "prepublish": "cake build",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "version": "0.1.0"
+}

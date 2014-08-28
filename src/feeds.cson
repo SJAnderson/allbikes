@@ -1,0 +1,142 @@
+[
+  {
+    name: 'Aspen WE-cycle'
+    id: 'ASE'
+    city: 'Aspen'
+    state: 'Colorado'
+    country: 'USA'
+    coordinates: {lat: 39.1922, long: -106.8244}
+    type: 'json'
+    url: 'https://www.we-cycle.org/pbsc/stations.php'
+  }
+  {
+    name: 'Bay Area Bike Share'
+    id: 'SFO'
+    city: 'San Francisco'
+    state: 'California'
+    country: 'USA'
+    coordinates: {lat: 37.774929, long: -122.419416}
+    type: 'json'
+    url: 'http://bayareabikeshare.com/stations/json'
+  }
+  {
+    name: 'Divvy'
+    id: 'ORD'
+    city: 'Chicago'
+    state: 'Illinois'
+    country: 'USA'
+    coordinates: {lat: 41.878114, long: -87.629798}
+    type: 'json'
+    url: 'http://www.divvybikes.com/stations/json'
+  }
+  {
+    name: 'Hubway'
+    id: 'BOS'
+    city: 'Boston'
+    state: 'Massachusetts'
+    country: 'USA'
+    coordinates: {lat: 42.358431, long: -71.059773}
+    type: 'xml'
+    url: 'http://www.thehubway.com/data/stations/bikeStations.xml'
+  }
+  {
+    name: 'Melbourne Bike Share'
+    id: 'MEL'
+    city: 'Melbourne'
+    state: 'Victoria'
+    country: 'Australia'
+    coordinates: {lat: -37.814107, long: 144.963280}
+    type: 'data'
+    url: 'http://www.melbournebikeshare.com.au/stationmap/data'
+  }
+  {
+    name: 'Citi Bike'
+    id: 'JFK'
+    city: 'New York City'
+    state: 'New York'
+    country: 'USA'
+    coordinates: {lat: 40.712784, long: -74.005941}
+    type: 'json'
+    url: 'http://citibikenyc.com/stations/json'
+  }
+  {
+    name: 'Bike Chattanooga'
+    id: 'CHA'
+    city: 'Chattanooga'
+    state: 'Tennessee'
+    country: 'USA'
+    coordinates: {lat: 35.045630, long: -85.309680}
+    type: 'json'
+    url: 'http://www.bikechattanooga.com/stations/json'
+  }
+  {
+    name: 'CoGo'
+    id: 'CMH'
+    city: 'Columbus'
+    state: 'Ohio'
+    country: 'USA'
+    coordinates: {lat: 39.961176, long: -82.998794}
+    type: 'json'
+    url: 'http://cogobikeshare.com/stations/json'
+  }
+  {
+    name: 'Montreal Bixi'
+    id: 'YUL'
+    city: 'Montreal'
+    state: 'Quebec'
+    country: 'Canada'
+    coordinates: {lat: 45.508670, long: -73.553992}
+    type: 'xml'
+    url: 'http://montreal.bixi.com/data/bikeStations.xml'
+  }
+  {
+    name: 'Ottawa Bixi'
+    id: 'YOW'
+    city: 'Ottawa'
+    state: 'Ontario'
+    country: 'Canada'
+    coordinates: {lat: 45.421530, long: -75.697193}
+    type: 'xml'
+    url: 'http://capital.bixi.com/data/bikeStations.xml'
+  }
+  {
+    name: 'Capital Bike Share'
+    id: 'DCA'
+    city: 'Washington'
+    state: 'DC'
+    country: 'USA'
+    coordinates: {lat: 38.907192, long: -77.036871}
+    type: 'xml'
+    url: 'http://www.capitalbikeshare.com/data/stations/bikeStations.xml'
+  }
+  {
+    name: 'Nice Ride'
+    id: 'MSP'
+    city: 'Minneapolis'
+    state: 'Minnesota'
+    country: 'USA'
+    coordinates: {lat: 44.983334, long: -93.266670}
+    type: 'xml'
+    url: 'http://secure.niceridemn.org/data2/bikeStations.xml'
+  }
+  {
+    name: 'Barclay\'s Cycle Hire'
+    id: 'LHR'
+    city: 'London'
+    state: 'London'
+    country: 'UK'
+    coordinates: {lat: 51.507351, long: -0.127758}
+    type: 'xml'
+    url: 'http://www.tfl.gov.uk/tfl/syndication/feeds/cycle-hire/livecyclehireupdates.xml'
+  }
+  {
+    name: 'Toronto Bixi'
+    id: 'YYZ'
+    city: 'Toronto'
+    state: 'Ontraio'
+    country: 'Canada'
+    coordinates: {lat: 43.653226, long: -79.383184}
+    type: 'json'
+    url: 'http://www.bikesharetoronto.com/stations/json'
+  }
+]
