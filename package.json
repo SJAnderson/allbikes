@@ -3,7 +3,6 @@
     "dependencies": {
         "async": "0.9.x",
         "body-parser": "1.6.x",
-        "cson": "1.6.x",
         "express": "4.8.x",
         "mongodb": "1.4.x",
         "morgan": "1.2.x",
@@ -16,6 +15,7 @@
         "cson": "1.6.x"
     },
     "keywords": [
+        "api",
         "aspen",
         "barclay's cycle hire",
         "bay area bike share",
@@ -36,9 +36,11 @@
         "melbourne",
         "minneapolis",
         "montreal",
+        "mongodb",
         "new york citi bike",
         "nice ride",
         "ottawa",
+        "rest",
         "toronto",
         "washington d.c.",
         "WE-cycle"
@@ -52,5 +54,5 @@
         "prepublish": "cake build",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "version": "0.1.0"
+    "version": "0.1.1"
 }

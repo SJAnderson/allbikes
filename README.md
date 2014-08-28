@@ -23,7 +23,7 @@ Stations currently supported and their respective API reference codes (city code
 | Toronto Bixi|Toronto, Ontraio | YYZ |
 
 # Goal
-While every Bike Share program has a live JSON or XML feed, the data is presented differently thus making a universal bike share app hard to create. This project aims to convert the various data formats to a singular, easy-to-inerpret format.
+While every Bike Share program has a live JSON or XML feed, the data is presented differently thus making a universal bike share app hard to create. This project aims to convert the various data formats to a singular, easy-to-interpret format.
 
 #Calls 
 
