@@ -65,6 +65,7 @@ remapData = (station, done) ->
   station = remapProperty station, 'availableBikes', 'nbBikes'
   station = remapProperty station, 'availableDocks', 'nbEmptyDocks'
   station = remapProperty station, 'name', 'stationName'
+  station.lastUpdated = new Date.now()
   station.totalDocks = station.availableDocks + station.availableBikes
   delete station[field] for field in utils.unused_fields
   done null, station
@@ -114,18 +115,22 @@ updateStations = (db, done) ->
   ], (err) ->
     done err
 
+updateData = (next) ->
+  async.series [
+    (next) -> updateFeeds db, next
+    (next) -> updateStations db, next
+  ], (err) ->
+    time = Date.now()
+    log = {err, time}
+    update db, 'logs', log, log, (err, results) ->
+      return next err if err
+      console.log "Stations updated at #{Date.now()}"
+      setTimeout updateData, 120000
+
 run = ->
   async.waterfall [
     (next) -> open next
-    (db, next) ->
-      async.series [
-        (next) -> updateFeeds db, next
-        (next) -> updateStations db, next
-      ], (err) ->
-        time = Date.now()
-        log = {err, time}
-        update db, 'logs', log, log, next
-
+    (next) -> updateData db, next
   ], (err) ->
     console.log "Error: #{err}" if err
 run()
