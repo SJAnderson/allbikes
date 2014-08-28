@@ -65,7 +65,7 @@ remapData = (station, done) ->
   station = remapProperty station, 'availableBikes', 'nbBikes'
   station = remapProperty station, 'availableDocks', 'nbEmptyDocks'
   station = remapProperty station, 'name', 'stationName'
-  station.lastUpdated = new Date.now()
+  station.lastUpdated = Date.now()
   station.totalDocks = station.availableDocks + station.availableBikes
   delete station[field] for field in utils.unused_fields
   done null, station
