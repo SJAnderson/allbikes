@@ -9,7 +9,6 @@ task 'build', 'Build project from src/*.coffee to lib/*.js', ->
     throw err if err
     console.log stdout + stderr
 
-
   exec 'coffee --compile --output ./ src/app.coffee', (err, stdout, stderr) ->
     throw err if err
     console.log stdout + stderr

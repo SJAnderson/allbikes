@@ -32,7 +32,7 @@ While every Bike Share program has a live JSON or XML feed, the data is presente
 ```
 /bikeshare/stations
 ```
-** All Stations
+** All Stations **
 - returns a JSON array of all stations around the world
 
 #### Planned
@@ -40,7 +40,7 @@ While every Bike Share program has a live JSON or XML feed, the data is presente
 ```
 /bikeshare/city/:citycode
 ```
-** One station
+** One station **
 - will return a JSON array of stations from one city
 
 ```
