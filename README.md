@@ -46,7 +46,7 @@ While every Bike Share program has a live JSON or XML feed, the data is presente
 ```
 /bikeshare/stations/:closest/:lat/:long/:maxresults
 ```
-** Closest stations
+**Closest stations**
 - will return closest stations based on latitude and longitude paramaters
 
 ##### Examples coming soon. Contributions welcome.
