@@ -13,10 +13,7 @@ server = new mongo.Server host, port, auto_reconnect: true
 db = new mongo.Db 'BikeShare', server, journal: true
 
 # open db
-open = (next) ->
-  db.open (err, db) ->
-    return next err if err
-    next null, db
+open = (next) -> db.open next
 
 # arrange URLs into array
 prepareResources = (db, done) ->
@@ -112,30 +109,32 @@ updateStations = (db, done) ->
   ], (err) ->
     done err
 
-updateData = (next) ->
-  async.series [
-    (next) -> updateFeeds db, next
-    (next) -> updateStations db, next
-  ], (err) ->
-    time = Date.now()
-    log = {err, time}
-    update db, 'logs', log, log, (errors, results) ->
-      return next err if errors
-      if err
-        message = "Error with data update: #{err}"
-      else
-        message = "Stations updated at #{Date.now()}"
+listenToStations = (done) ->
+  async.forever (
+    (next) ->
+      updateStations db, (err) ->
+        time = Date.now()
+        log = {err, time}
+        update db, 'logs', log, log, (err, results) ->
+          return next err if err
+          console.log "Stations updated at #{Date.now()}"
+          setTimeout -> next err, 300000
+  ), done
 
-      console.log message
-      setTimeout updateData, 120000
+updateData = (done) ->
+  async.series [
+    (next) -> updateFeeds next
+    (next) -> listenToStations next
+  ], done
 
 run = ->
   async.waterfall [
     (next) -> open next
-    (next) -> updateData db, next
+    (next) -> updateData next
   ], (err) ->
-    console.log "Error: #{err}" if err
+    console.log "Error #{err}, stopped updating stations"
 run()
+
 
 filterCity = (stations, city, next) ->
   stations = stations.filter (station) ->
@@ -176,8 +175,8 @@ module.exports =
     city = city.toUpperCase()
     if city in cities
       stations = db.collection 'stations'
-      loc = {$near: [long, lat]}}
-      loc.$maxDistance: 100
+      loc = {$near: [long, lat]}
+      loc.$maxDistance = 100
       async.waterfall [
         (next) -> stations.find loc, next
         (results, next) -> results.toArray next
