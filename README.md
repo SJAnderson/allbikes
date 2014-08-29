@@ -32,16 +32,16 @@ While every Bike Share program has a live JSON or XML feed, the data is presente
 ```
 /bikeshare/stations
 ```
-Returns a JSON array of all stations around the world.
 **Example**: http://www.sjanderson.org/bikeshare/stations
+Returns a JSON array of all stations around the world.
 
 
 ### stations from a city
 ```
 /bikeshare/city/:city_id
 ```
-Returns a JSON array of stations from a city. Reference the table above for `city_id`s, I used airport codes.
 **Example**: http://www.sjanderson.org/bikeshare/city/SFO
+Returns a JSON array of stations from a city. Reference the table above for `city_id`s, I used airport codes.
 
 # planned
 
