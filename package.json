@@ -57,5 +57,5 @@
         "prepublish": "cake build",
         "test": "vows test/test.js"
     },
-    "version": "0.1.8"
+    "version": "0.1.9"
 }
