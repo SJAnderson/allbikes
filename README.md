@@ -5,7 +5,7 @@ allbikes is an API that provides live station information for Bixi-built Bike Sh
 
 Stations currently supported and their respective API reference codes (city code).
 
-| Bike Share | City | city code |
+| Bike Share | City | city_id |
 | ----- | ------ |------ |
 | Aspen WE-cycle| Aspen, CO | ASE |
 | Barclay's Cycle Hire| London, UK| LHR |
@@ -35,13 +35,13 @@ While every Bike Share program has a live JSON or XML feed, the data is presente
 **All Stations**
 - returns a JSON array of all stations around the world
 
-#### Planned
+```
+/bikeshare/city/:city_id
+```
+**Stations from a city**
+- returns a JSON array of stations from a city. Reference the table above for `city_id`s, I used airport codes.
 
-```
-/bikeshare/city/:citycode
-```
-**One station**
-- will return a JSON array of stations from one city
+#### Planned
 
 ```
 /bikeshare/stations/:closest/:lat/:long/:maxresults
