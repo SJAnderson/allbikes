@@ -15,6 +15,9 @@
   endpoints = {
     '/bikeshare/stations': function(req, res) {
       return bikeShare.allStations(req, res);
+    },
+    '/bikeshare/city/:city': function(req, res) {
+      return bikeShare.cityStations(req, res);
     }
   };
 
