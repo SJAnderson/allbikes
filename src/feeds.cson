@@ -5,7 +5,7 @@
     city: 'Aspen'
     state: 'Colorado'
     country: 'USA'
-    coordinates: {lat: 39.1922, long: -106.8244}
+    loc: {type: "Point", coordinates: [39.1922, -106.8244]}
     url: 'https://www.we-cycle.org/pbsc/stations.php'
   }
   {
@@ -14,7 +14,7 @@
     city: 'San Francisco'
     state: 'California'
     country: 'USA'
-    coordinates: {lat: 37.774929, long: -122.419416}
+    loc: {type: "Point", coordinates: [37.774929, -122.419416]}
     url: 'http://bayareabikeshare.com/stations/json'
   }
   {
@@ -23,7 +23,7 @@
     city: 'Chicago'
     state: 'Illinois'
     country: 'USA'
-    coordinates: {lat: 41.878114, long: -87.629798}
+    loc: {type: "Point", coordinates: [41.878114, -87.629798]}
     url: 'http://www.divvybikes.com/stations/json'
   }
   {
@@ -32,7 +32,7 @@
     city: 'Boston'
     state: 'Massachusetts'
     country: 'USA'
-    coordinates: {lat: 42.358431, long: -71.059773}
+    loc: {type: "Point", coordinates: [42.358431, -71.059773]}
     url: 'http://www.thehubway.com/data/stations/bikeStations.xml'
   }
   {
@@ -41,7 +41,7 @@
     city: 'Melbourne'
     state: 'Victoria'
     country: 'Australia'
-    coordinates: {lat: -37.814107, long: 144.963280}
+    loc: {type: "Point", coordinates: [-37.814107, 144.963280]}
     url: 'http://www.melbournebikeshare.com.au/stationmap/data'
   }
   {
@@ -50,7 +50,7 @@
     city: 'New York City'
     state: 'New York'
     country: 'USA'
-    coordinates: {lat: 40.712784, long: -74.005941}
+    loc: {type: "Point", coordinates: [40.712784, -74.005941]}
     url: 'http://citibikenyc.com/stations/json'
   }
   {
@@ -59,7 +59,7 @@
     city: 'Chattanooga'
     state: 'Tennessee'
     country: 'USA'
-    coordinates: {lat: 35.045630, long: -85.309680}
+    loc: {type: "Point", coordinates: [35.045630, -85.309680]}
     url: 'http://www.bikechattanooga.com/stations/json'
   }
   {
@@ -68,7 +68,7 @@
     city: 'Columbus'
     state: 'Ohio'
     country: 'USA'
-    coordinates: {lat: 39.961176, long: -82.998794}
+    loc: {type: "Point", coordinates: [39.961176, -82.998794]}
     url: 'http://cogobikeshare.com/stations/json'
   }
   {
@@ -77,7 +77,7 @@
     city: 'Montreal'
     state: 'Quebec'
     country: 'Canada'
-    coordinates: {lat: 45.508670, long: -73.553992}
+    loc: {type: "Point", coordinates: [45.508670, -73.553992]}
     url: 'http://montreal.bixi.com/data/bikeStations.xml'
   }
   {
@@ -86,7 +86,7 @@
     city: 'Ottawa'
     state: 'Ontario'
     country: 'Canada'
-    coordinates: {lat: 45.421530, long: -75.697193}
+    loc: {type: "Point", coordinates: [45.421530, -75.697193]}
     url: 'http://capital.bixi.com/data/bikeStations.xml'
   }
   {
@@ -95,7 +95,7 @@
     city: 'Washington'
     state: 'DC'
     country: 'USA'
-    coordinates: {lat: 38.907192, long: -77.036871}
+    loc: {type: "Point", coordinates: [38.907192, -77.036871]}
     url: 'http://www.capitalbikeshare.com/data/stations/bikeStations.xml'
   }
   {
@@ -104,7 +104,7 @@
     city: 'Minneapolis'
     state: 'Minnesota'
     country: 'USA'
-    coordinates: {lat: 44.983334, long: -93.266670}
+    loc: {type: "Point", coordinates: [44.983334, -93.266670]}
     url: 'http://secure.niceridemn.org/data2/bikeStations.xml'
   }
   {
@@ -113,7 +113,7 @@
     city: 'London'
     state: 'London'
     country: 'UK'
-    coordinates: {lat: 51.507351, long: -0.127758}
+    loc: {type: "Point", coordinates: [51.507351, -0.127758]}
     url: 'http://www.tfl.gov.uk/tfl/syndication/feeds/cycle-hire/livecyclehireupdates.xml'
   }
   {
@@ -122,7 +122,8 @@
     city: 'Toronto'
     state: 'Ontraio'
     country: 'Canada'
-    coordinates: {lat: 43.653226, long: -79.383184}
+    loc: {type: "Point", coordinates: [43.653226, -79.383184]}
     url: 'http://www.bikesharetoronto.com/stations/json'
   }
 ]
+

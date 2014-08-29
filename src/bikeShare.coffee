@@ -13,10 +13,7 @@ server = new mongo.Server host, port, auto_reconnect: true
 db = new mongo.Db 'BikeShare', server, journal: true
 
 # open db
-open = (next) ->
-  db.open (err, db) ->
-    return next err if err
-    next null, db
+open = (next) -> db.open next
 
 # arrange URLs into array
 prepareResources = (db, done) ->
@@ -24,7 +21,7 @@ prepareResources = (db, done) ->
     (next) -> db.collection('feeds').find {}, next
     (data, next) -> data.toArray next
   ], (err, cities) ->
-    urls = ({url, type} for {url, type} in cities)
+    urls = ({url, id} for {url, id} in cities)
     done err, urls
 
 remapErrors = (station) ->
@@ -86,7 +83,7 @@ updateFeeds = (db, done) ->
     update db, 'feeds', query, feed, next
   ), done
 
-updateFeeds = (db, done) ->
+updateFeeds = (done) ->
   async.eachSeries feeds, ((feed, next) ->
     query = {id: feed.id}
     update db, 'feeds', query, feed, next
@@ -102,8 +99,7 @@ getCities = (endpoints, next) ->
   async.concat endpoints, getCity, next
 
 getCity = (endpoint, next) ->
-  {url} = endpoint
-  utils.get url, next
+  utils.get endpoint, next
 
 updateStations = (db, done) ->
   resources = []
@@ -115,24 +111,32 @@ updateStations = (db, done) ->
   ], (err) ->
     done err
 
-updateData = (next) ->
+listenToStations = (done) ->
+  async.forever (
+    (next) ->
+      updateStations db, (err) ->
+        time = Date.now()
+        log = {err, time}
+        update db, 'logs', log, log, (err, results) ->
+          return next err if err
+          console.log "Stations updated at #{Date.now()}"
+          pingAgain = ->
+            next err
+          setTimeout pingAgain, 300000
+  ), done
+
+updateData = (done) ->
   async.series [
-    (next) -> updateFeeds db, next
-    (next) -> updateStations db, next
-  ], (err) ->
-    time = Date.now()
-    log = {err, time}
-    update db, 'logs', log, log, (err, results) ->
-      return next err if err
-      console.log "Stations updated at #{Date.now()}"
-      setTimeout updateData, 120000
+    (next) -> updateFeeds next
+    (next) -> listenToStations next
+  ], done
 
 run = ->
   async.waterfall [
     (next) -> open next
-    (next) -> updateData db, next
+    (next) -> updateData next
   ], (err) ->
-    console.log "Error: #{err}" if err
+    console.log "Error #{err}, stopped updating stations"
 run()
 
 module.exports =
@@ -145,3 +149,19 @@ module.exports =
     ], (err, stations) ->
       return res.send 'Database error' if err
       res.send stations
+
+  cityStations: (req, res) ->
+    cities = (feed.id.toUpperCase() for feed in feeds)
+    city = req.params.city.toUpperCase()
+    if city in cities
+      stations = db.collection 'stations'
+      async.waterfall [
+        (next) -> stations.find {city_id: city}, next
+        (results, next) -> results.toArray next
+      ], (err, stations) ->
+        return res.send 'Database error' if err
+        res.send stations
+    else
+      err = "City ID not recognized. Valid IDs: #{cities.join ', '}."
+      err += " Documentation: https://github.com/SJAnderson/allbikes."
+      res.send {error: err}
