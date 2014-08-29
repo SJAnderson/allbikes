@@ -18,7 +18,8 @@ module.exports =
     else
       next()
 
-  get: (url, next) ->
+  get: (resource, done) ->
+    {url, id} = resource
     async.waterfall [
       (next) -> request {method: 'GET', url: url}, next
       (resp, body, next) ->
@@ -28,11 +29,17 @@ module.exports =
         if resp.statusCode < 200 or resp.statusCode > 302
           return next "bad #{body}"
 
+        addCity = ->
+          body.map (station) ->
+            station.city_id = id
+            station
+
         parseJSON = ->
           try
             body = JSON.parse body
             {stationBeanList} = body
             body = stationBeanList if stationBeanList
+            body = addCity()
             return next null, body
           catch err
             return next err
@@ -40,6 +47,7 @@ module.exports =
         parseXML = ->
           parser.parseString body, (err, result) ->
             body = result.stations.station
+            body = addCity()
             next null, body
 
         switch resp.headers['content-type']
@@ -59,7 +67,7 @@ module.exports =
           else
             next "Unknown content type | #{url}"
     ], (err, body) ->
-      next err, body
+      done err, body
 
   unused_fields: [
     'altitude'

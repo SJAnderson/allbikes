@@ -12,6 +12,12 @@ endpoints =
   '/bikeshare/stations': (req, res) ->
     bikeShare.allStations req, res
 
+  '/bikeshare/city/:city': (req, res) ->
+    bikeShare.cityStations req, res
+
+  '/bikeshare/city/:city/:lat/:long': (req, res) ->
+    bikeShare.closestStations req, res
+
 # middleware
 middleware = [
   morgan 'dev'

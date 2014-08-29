@@ -24,7 +24,7 @@ prepareResources = (db, done) ->
     (next) -> db.collection('feeds').find {}, next
     (data, next) -> data.toArray next
   ], (err, cities) ->
-    urls = ({url, type} for {url, type} in cities)
+    urls = ({url, id} for {url, id} in cities)
     done err, urls
 
 remapErrors = (station) ->
@@ -41,12 +41,10 @@ remapErrors = (station) ->
 
 remapLatLong = (station) ->
   properties = ['lat', 'longitude', 'latitude', 'long']
-  coordinates = {}
-  coordinates.latitude = parseFloat station.lat or station.latitude
-  coordinates.longitude = parseFloat station.long or station.longitude
+  latitude = parseFloat station.lat or station.latitude
+  longitude = parseFloat station.long or station.longitude
+  station.loc = [longitude, latitude]
   (delete station[prop] if station[prop]) for prop in properties
-  station.coordinates = coordinates
-  station.id = coordinates.latitude + coordinates.latitude
   return station
 
 remapProperty = (station, primary, secondary) ->
@@ -76,8 +74,9 @@ translateData = (stations, next) ->
 # DB update shortcut
 update = (db, collection, query, update, next) ->
   collection = db.collection collection
-  options = {safe: true, upsert: true}
-  collection.update query, update, options, next
+  collection.ensureIndex {loc: '2d'}, (err) ->
+    options = {safe: true, upsert: true}
+    collection.update query, update, options, next
 
 # update feeds collection
 updateFeeds = (db, done) ->
@@ -102,11 +101,9 @@ getCities = (endpoints, next) ->
   async.concat endpoints, getCity, next
 
 getCity = (endpoint, next) ->
-  {url} = endpoint
-  utils.get url, next
+  utils.get endpoint, next
 
 updateStations = (db, done) ->
-  resources = []
   async.waterfall [
     (next) -> prepareResources db, next
     (endpoints, next) -> getCities endpoints, next
@@ -122,9 +119,14 @@ updateData = (next) ->
   ], (err) ->
     time = Date.now()
     log = {err, time}
-    update db, 'logs', log, log, (err, results) ->
-      return next err if err
-      console.log "Stations updated at #{Date.now()}"
+    update db, 'logs', log, log, (errors, results) ->
+      return next err if errors
+      if err
+        message = "Error with data update: #{err}"
+      else
+        message = "Stations updated at #{Date.now()}"
+
+      console.log message
       setTimeout updateData, 120000
 
 run = ->
@@ -134,6 +136,11 @@ run = ->
   ], (err) ->
     console.log "Error: #{err}" if err
 run()
+
+filterCity = (stations, city, next) ->
+  stations = stations.filter (station) ->
+    station.city_id is city
+  next null, stations
 
 module.exports =
   allStations: (req, res) ->
@@ -145,3 +152,41 @@ module.exports =
     ], (err, stations) ->
       return res.send 'Database error' if err
       res.send stations
+
+  cityStations: (req, res) ->
+    cities = (feed.id.toUpperCase() for feed in feeds)
+    city = req.params.city.toUpperCase()
+    if city in cities
+      stations = db.collection 'stations'
+      async.waterfall [
+        (next) -> stations.find {city_id: city}, next
+        (results, next) -> results.toArray next
+      ], (err, stations) ->
+        return res.send 'Database error' if err
+        res.send stations
+    else
+      err = "City ID not recognized. Valid IDs: #{cities.join ', '}."
+      err += " Documentation: https://github.com/SJAnderson/allbikes."
+      res.send {error: err}
+
+  closestStations: (req, res) ->
+    {city, lat, long} = req.params
+    [lat, long] = [parseFloat(lat), parseFloat(long)]
+    cities = (feed.id.toUpperCase() for feed in feeds)
+    city = city.toUpperCase()
+    if city in cities
+      stations = db.collection 'stations'
+      loc = {$near: [long, lat]}}
+      loc.$maxDistance: 100
+      async.waterfall [
+        (next) -> stations.find loc, next
+        (results, next) -> results.toArray next
+        (stations, next) -> filterCity stations, city, next
+      ], (err, stations) ->
+        return res.send {error: "Database error - #{err}"} if err
+        res.send stations
+    else
+      err = "City ID not recognized. Valid IDs: #{cities.join ', '}."
+      err += " Documentation: https://github.com/SJAnderson/allbikes."
+      res.send {error: err}
+
