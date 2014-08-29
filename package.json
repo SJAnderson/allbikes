@@ -14,6 +14,7 @@
     "devDependencies": {
         "coffee-script": "1.8.x",
         "cson": "1.6.x",
+        "forever": "0.11.x",
         "vows": "0.7.x"
     },
     "keywords": [
