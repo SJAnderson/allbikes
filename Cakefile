@@ -6,12 +6,20 @@ task 'build', 'Build project from src/*.coffee to lib/*.js', ->
     console.log 'Coffee compiled to JS...'
 
     exec 'rm -f lib/app.js', (err, stdout, stderr) ->
-    throw err if err
-    console.log 'app.js removed from lib...'
+      throw err if err
+      console.log 'app.js removed from lib...'
+
+    exec 'rm -f lib/test.js', (err, stdout, stderr) ->
+      throw err if err
+      console.log 'test.js removed from lib...'
 
   exec 'coffee --compile --output ./ src/app.coffee', (err, stdout, stderr) ->
     throw err if err
     console.log 'app.js placed in lib...'
+
+  exec 'coffee --compile --output test/ src/test.coffee', (err, stdout, stderr) ->
+    throw err if err
+    console.log 'test.js placed in lib...'
 
   exec 'cson2json src/config.cson > lib/config.json', (err, stdout, stderr) ->
     throw err if err
