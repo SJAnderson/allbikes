@@ -1,5 +1,5 @@
 # allbikes API
-![](http://img.shields.io/npm/v/allbikes.svg)
+![](http://img.shields.io/travis/SJAnderson/allbikes.svg)
 
 
 allbikes is an API that provides live station information for Bixi-built Bike Share programs around the world. 
