@@ -1,6 +1,5 @@
 # allbikes API
-[![NPM Version](http://img.shields.io/npm/v/allbikes.svg)](https://www.npmjs.org/package/allbikes)
-[![BuildStatus](http://img.shields.io/travis/SJAnderson/allbikes.svg)(https://travis-ci.org/SJAnderson/allbikes)
+[![NPM Version](http://img.shields.io/npm/v/allbikes.svg)](https://www.npmjs.org/package/allbikes)[![BuildStatus](http://img.shields.io/travis/SJAnderson/allbikes.svg)](https://travis-ci.org/SJAnderson/allbikes)
 
 allbikes is an API that provides live station information for Bixi-built Bike Share programs around the world. 
 
