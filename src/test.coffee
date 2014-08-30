@@ -26,7 +26,7 @@ for code in codes
       .expect 200
     .undiscuss()
     .discuss "Test city lat/long endpoint #{code}"
-    .get "/bikeshare/city/SFO/37.42/-122.13"
+    .get "/bikeshare/city/#{code}/37.42/-122.13"
       .expect 200
     .undiscuss()
 

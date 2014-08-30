@@ -26,7 +26,7 @@
 
   for (_i = 0, _len = codes.length; _i < _len; _i++) {
     code = codes[_i];
-    station.discuss("testing city " + code).get("/bikeshare/city/" + code).expect(200).undiscuss().discuss("Test city lat/long endpoint " + code).get("/bikeshare/city/SFO/37.42/-122.13").expect(200).undiscuss();
+    station.discuss("testing city " + code).get("/bikeshare/city/" + code).expect(200).undiscuss().discuss("Test city lat/long endpoint " + code).get("/bikeshare/city/" + code + "/37.42/-122.13").expect(200).undiscuss();
   }
 
   station["export"](module);
