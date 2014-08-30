@@ -43,11 +43,22 @@ Returns a JSON array of all stations around the world.
 
 Returns a JSON array of stations from a city. Reference the table above for `city_id`s, I used airport codes.
 
-# planned
+### all stations sorted from closest to farthest
+```
+/bikeshare/stations/:lat/:long/
+```
+**Example**: http://www.sjanderson.org/bikeshare/stations/37.42/-122.13
 
-### closest stations
-`/bikeshare/stations/:closest/:lat/:long/:maxresults`
-Will return closest stations based on latitude and longitude paramaters.
+Returns a JSON array of all stations sorted by closest to farthest.
+
+### stations from a city sorted from closest to farthest
+```
+/bikeshare/city/:city/:lat/:long/
+```
+Returns a JSON array of stations from a city sorted by closest to farthest.
+
+**Example**: http://www.sjanderson.org/bikeshare/city/SFO/37.42/-122.13
+
 
 ## contact
 Twitter: [@SJAndersonLA](twitter.com/sjandersonla)
