@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "0.10"
+services:
+  - mongodb
+before_script:
+  - forever start app.js
+  - forever list
+  - sleep 15

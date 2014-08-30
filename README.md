@@ -1,53 +1,55 @@
-allbikes API
-========
+# allbikes API [![NPM Version](http://img.shields.io/npm/v/allbikes.svg)](https://www.npmjs.org/package/allbikes) [![BuildStatus](http://img.shields.io/travis/SJAnderson/allbikes.svg)](https://travis-ci.org/SJAnderson/allbikes)
 
 allbikes is an API that provides live station information for Bixi-built Bike Share programs around the world. 
 
 Stations currently supported and their respective API reference codes (city code).
 
-| Bike Share | City | city code |
+| Bike Share | City | city_id |
 | ----- | ------ |------ |
 | Aspen WE-cycle| Aspen, CO | ASE |
 | Barclay's Cycle Hire| London, UK| LHR |
 | Bay Area Bike Share| San Francisco, CA | SFO |
-| Bike Chattanooga | Chattanooga, Tennessee | CHA |
-| Capital Bike Share| Washington DC| DCA |
+| Bike Chattanooga | Chattanooga, TN | CHA |
+| Capital Bike Share| Washington, D.C.| DCA |
 | Citi Bike| New York City, NY | JFK |
-| CoGo | Columbus, Ohio | CMH |
-| Divvy | Chicago, Illinois | ORD |
-| Hubway | Boston, Massachusetts | BOS |
-| Melbourne Bike Share| Melbourne, Victoria | MEL |
-| Montreal Bixi | Montreal | YUL |
-| Nice Ride| Minneapolis, Minnesota| MSP |
-| Ottawa Bixi| Ottawa, Ontario| YOW |
-| Toronto Bixi|Toronto, Ontraio | YYZ |
+| CoGo | Columbus, OH | CMH |
+| Divvy | Chicago, IL | ORD |
+| Hubway | Boston, MA | BOS |
+| Melbourne Bike Share| Melbourne, Vic | MEL |
+| Montreal Bixi | Montreal, QC | YUL |
+| Nice Ride| Minneapolis, MN| MSP |
+| Ottawa Bixi| Ottawa, Ont| YOW |
+| Toronto Bixi|Toronto, Ont | YYZ |
 
-# Goal
-While every Bike Share program has a live JSON or XML feed, the data is presented differently thus making a universal bike share app hard to create. This project aims to convert the various data formats to a singular, easy-to-interpret format.
+# goal
+While every Bike Share program has a live JSON or XML feed, the data is presented differently thus making a universal bike share app difficult to create. This project aims to provide a easy-to-use solution for all bike-share data queries from around the world.
 
-#Calls 
+# implemented
 
-#### Implemented
-
+### all stations
 ```
 /bikeshare/stations
 ```
-**All Stations**
-- returns a JSON array of all stations around the world
+**Example**: http://www.sjanderson.org/bikeshare/stations
 
-#### Planned
+Returns a JSON array of all stations around the world.
 
-```
-/bikeshare/city/:citycode
-```
-**One station**
-- will return a JSON array of stations from one city
 
+### stations from a city
 ```
-/bikeshare/stations/:closest/:lat/:long/:maxresults
+/bikeshare/city/:city_id
 ```
-**Closest stations**
-- will return closest stations based on latitude and longitude paramaters
+**Example**: http://www.sjanderson.org/bikeshare/city/SFO
 
-##### Examples coming soon. Contributions welcome.
+Returns a JSON array of stations from a city. Reference the table above for `city_id`s, I used airport codes.
+
+# planned
+
+### closest stations
+`/bikeshare/stations/:closest/:lat/:long/:maxresults`
+Will return closest stations based on latitude and longitude paramaters.
+
+## contact
+Twitter: [@SJAndersonLA](twitter.com/sjandersonla)
+
 

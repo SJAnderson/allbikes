@@ -1,6 +1,7 @@
 {
     "author": "Steven J. Anderson <steven@SJAnderson.org>",
     "dependencies": {
+        "api-easy": "0.2.x",
         "async": "0.9.x",
         "body-parser": "1.6.x",
         "express": "4.8.x",
@@ -12,7 +13,9 @@
     "description": "Bike Share API for all Bike Shares.",
     "devDependencies": {
         "coffee-script": "1.8.x",
-        "cson": "1.6.x"
+        "cson": "1.6.x",
+        "forever": "0.11.x",
+        "vows": "0.7.x"
     },
     "keywords": [
         "api",
@@ -52,7 +55,7 @@
     "repository": "https://github.com/SJAnderson/allbikes",
     "scripts": {
         "prepublish": "cake build",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "vows test/test.js"
     },
-    "version": "0.1.4"
+    "version": "0.1.9"
 }

@@ -82,7 +82,7 @@ updateFeeds = (db, done) ->
     update db, 'feeds', query, feed, next
   ), done
 
-updateFeeds = (db, done) ->
+updateFeeds = (done) ->
   async.eachSeries feeds, ((feed, next) ->
     query = {id: feed.id}
     update db, 'feeds', query, feed, next
@@ -118,7 +118,9 @@ listenToStations = (done) ->
         update db, 'logs', log, log, (err, results) ->
           return next err if err
           console.log "Stations updated at #{Date.now()}"
-          setTimeout -> next err, 300000
+          pingAgain = ->
+            next err
+          setTimeout pingAgain, 300000
   ), done
 
 updateData = (done) ->
@@ -188,4 +190,3 @@ module.exports =
       err = "City ID not recognized. Valid IDs: #{cities.join ', '}."
       err += " Documentation: https://github.com/SJAnderson/allbikes."
       res.send {error: err}
-
