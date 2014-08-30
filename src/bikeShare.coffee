@@ -40,7 +40,7 @@ remapLatLong = (station) ->
   properties = ['lat', 'longitude', 'latitude', 'long']
   latitude = parseFloat station.lat or station.latitude
   longitude = parseFloat station.long or station.longitude
-  station.loc = [longitude, latitude]
+  station.location = {type: 'Point', coordinates: [longitude, latitude]}
   (delete station[prop] if station[prop]) for prop in properties
   return station
 
@@ -71,7 +71,7 @@ translateData = (stations, next) ->
 # DB update shortcut
 update = (db, collection, query, update, next) ->
   collection = db.collection collection
-  collection.ensureIndex {loc: '2d'}, (err) ->
+  collection.ensureIndex {location: '2dsphere'}, (err) ->
     options = {safe: true, upsert: true}
     collection.update query, update, options, next
 
@@ -137,10 +137,26 @@ run = ->
     console.log "Error #{err}, stopped updating stations"
 run()
 
-
 filterCity = (stations, city, next) ->
-  stations = stations.filter (station) ->
-    station.city_id is city
+  return next null, stations unless city
+  cities = (feed.id.toUpperCase() for feed in feeds)
+  city = city.toUpperCase()
+  if city in cities
+    stations = stations.filter (station) ->
+      station.city_id is city
+    next null, stations
+  else
+    err = "City ID not recognized. Valid IDs: #{cities.join ', '}."
+    err += " Documentation: https://github.com/SJAnderson/allbikes."
+    return next err
+
+addDistance = (stations, coords, next) ->
+  {lat, long} = coords
+  for station in stations
+    {coordinates} = station.location
+    station_loc = {lat: coordinates[1], long:coordinates[0]}
+    user_loc = {lat: lat, long: long}
+    station.distance = utils.calcDistance user_loc, station_loc
   next null, stations
 
 module.exports =
@@ -173,20 +189,15 @@ module.exports =
   closestStations: (req, res) ->
     {city, lat, long} = req.params
     [lat, long] = [parseFloat(lat), parseFloat(long)]
-    cities = (feed.id.toUpperCase() for feed in feeds)
-    city = city.toUpperCase()
-    if city in cities
-      stations = db.collection 'stations'
-      loc = {$near: [long, lat]}
-      loc.$maxDistance = 100
-      async.waterfall [
-        (next) -> stations.find loc, next
-        (results, next) -> results.toArray next
-        (stations, next) -> filterCity stations, city, next
-      ], (err, stations) ->
-        return res.send {error: "Database error - #{err}"} if err
-        res.send stations
-    else
-      err = "City ID not recognized. Valid IDs: #{cities.join ', '}."
-      err += " Documentation: https://github.com/SJAnderson/allbikes."
-      res.send {error: err}
+    stations = db.collection 'stations'
+    coord = {type: "Point", coordinates: [long, lat]}
+    query = {location: {$near: {$geometry: coord}}}
+    async.waterfall [
+      (next) -> stations.find query, next
+      (results, next) -> results.toArray next
+      (stations, next) -> addDistance stations, {lat, long}, next
+      (stations, next) -> filterCity stations, city, next
+    ], (err, stations) ->
+      return res.send {error: "Database error - #{err}"} if err
+      res.send stations
+
