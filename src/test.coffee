@@ -13,6 +13,9 @@ station.use "localhost", 8080
   .get '/bikeshare/stations'
     .expect 200
   .undiscuss()
+  .discuss 'Test city lat/long endpoint'
+  .get "/bikeshare/stations/37.42/-122.13"
+    .expect 200
   .discuss 'Test bad endpoint'
   .get '/bikeshare/spiderman'
     .expect 404
@@ -20,7 +23,11 @@ station.use "localhost", 8080
 for code in codes
   station.discuss "testing city #{code}"
     .get "/bikeshare/city/#{code}"
-    .expect 200
+      .expect 200
+    .undiscuss()
+    .discuss "Test city lat/long endpoint #{code}"
+    .get "/bikeshare/city/#{code}/37.42/-122.13"
+      .expect 200
     .undiscuss()
 
 station.export module

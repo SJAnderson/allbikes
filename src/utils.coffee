@@ -18,7 +18,24 @@ module.exports =
     else
       next()
 
-  get: (resource, next) ->
+  calcDistance: (coord1, coord2) ->
+    [lat1, lon1] = [coord1.lat, coord1.long]
+    [lat2, lon2] = [coord2.lat, coord2.long]
+    radlat1 = Math.PI * lat1 / 180
+    radlat2 = Math.PI * lat2 / 180
+    radlon1 = Math.PI * lon1 / 180
+    radlon2 = Math.PI * lon2 / 180
+    theta = lon1 - lon2
+    radtheta = Math.PI * theta / 180
+    dist = Math.sin(radlat1) * Math.sin(radlat2)
+    dist += Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta)
+    dist = Math.acos(dist)
+    dist *= 180 / Math.PI
+    dist *= 60 * 1.1515
+    dist *= 1609.344
+    return Math.floor dist
+
+  get: (resource, done) ->
     {url, id} = resource
     async.waterfall [
       (next) -> request {method: 'GET', url: url}, next
@@ -66,8 +83,9 @@ module.exports =
 
           else
             next "Unknown content type | #{url}"
+
     ], (err, body) ->
-      next err, body
+      done err, body
 
   unused_fields: [
     'altitude'
@@ -78,7 +96,6 @@ module.exports =
     'lastCommunicationTime'
     'lastCommWithServer'
     'latestUpdateTime'
-    'location'
     'postalCode'
     'public'
     'removalDate'
