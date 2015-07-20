@@ -62,5 +62,4 @@ Returns a JSON array of stations from a city sorted by closest to farthest.
 
 ## contact
 Twitter: [@SJAndersonLA](twitter.com/sjandersonla)
-
-
+Email: steven@sjanderson.org
