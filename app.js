@@ -8,11 +8,11 @@
 
   morgan = require('morgan');
 
+  http = require('http');
+
   bikeShare = require('./lib/bikeShare.js');
 
   utils = require('./lib/utils.js');
-
-  http = require('http');
 
   endpoints = {
     '/bikeshare/stations': function(req, res) {

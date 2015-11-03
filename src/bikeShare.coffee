@@ -37,29 +37,32 @@ remapErrors = (station) ->
   return station
 
 remapLatLong = (station) ->
-  properties = ['lat', 'longitude', 'latitude', 'long']
-  latitude = parseFloat station.lat or station.latitude
-  longitude = parseFloat station.long or station.longitude
+  properties = ['lat', 'longitude', 'latitude', 'long', 'la', 'la', 'Latitude', 'Longitude']
+  latitude = parseFloat station.lat or station.latitude or station.Latitude or station.la
+  longitude = parseFloat station.long or station.longitude or station.Longitude or station.lo
   station.location = {type: 'Point', coordinates: [longitude, latitude]}
   (delete station[prop] if station[prop]) for prop in properties
   return station
 
 remapProperty = (station, primary, secondary) ->
-  if primary is 'name'
-    station[primary] = station[primary] or station[secondary]
-  else
-    value = station[primary] or station[secondary]
-    value = parseInt value or 0
-    station[primary] = value
-  delete station[secondary] if secondary
+  a = 0
+  while secondary < secondary.length
+    if station[secondary[a]]
+      if primary is 'name'
+        station[primary] = station[secondary[a]]
+      else
+        station[primary] = parseInt station[secondary[a]] or 0
+        delete station[secondary[a]]
+      break
+    a++
   return station
 
 remapData = (station, done) ->
   station = remapErrors station
   station = remapLatLong station
-  station = remapProperty station, 'availableBikes', 'nbBikes'
-  station = remapProperty station, 'availableDocks', 'nbEmptyDocks'
-  station = remapProperty station, 'name', 'stationName'
+  station = remapProperty station, 'availableBikes', ['nbBikes','Bikes','ba']
+  station = remapProperty station, 'availableDocks', ['nbEmptyDocks','Dockings','da']
+  station = remapProperty station, 'name', ['name','stationName','s','Address']
   station.lastUpdated = Date.now()
   station.totalDocks = station.availableDocks + station.availableBikes
   delete station[field] for field in utils.unused_fields

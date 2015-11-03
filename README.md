@@ -4,22 +4,25 @@ allbikes is an API that provides live station information for Bixi-built Bike Sh
 
 Stations currently supported and their respective API reference codes (city code).
 
-| Bike Share | City | city_id |
+| Bike Share | City | city_id | Active
 | ----- | ------ |------ |
-| Aspen WE-cycle| Aspen, CO | ASE |
-| Barclay's Cycle Hire| London, UK| LHR |
-| Bay Area Bike Share| San Francisco, CA | SFO |
-| Bike Chattanooga | Chattanooga, TN | CHA |
-| Capital Bike Share| Washington, D.C.| DCA |
-| Citi Bike| New York City, NY | JFK |
-| CoGo | Columbus, OH | CMH |
-| Divvy | Chicago, IL | ORD |
-| Hubway | Boston, MA | BOS |
-| Melbourne Bike Share| Melbourne, Vic | MEL |
-| Montreal Bixi | Montreal, QC | YUL |
-| Nice Ride| Minneapolis, MN| MSP |
-| Ottawa Bixi| Ottawa, Ont| YOW |
-| Toronto Bixi|Toronto, Ont | YYZ |
+| Aspen WE-cycle | Aspen, CO | ASE | Yes
+| Barclay's Cycle Hire | London, UK| LHR | Yes
+| Bay Area Bike Share | San Francisco, CA | SFO | Yes
+| Bike Chattanooga | Chattanooga, TN | CHA | Yes
+| Capital Bike Share | Washington, D.C.| DCA | Yes
+| Citi Bike | New York City, NY | JFK | Yes
+| Citi Bike | Miami, FL| MIA | No
+| CoGo | Columbus, OH | CMH | Yes
+| Deco Bike | San Diego, CA| SAN | No
+| Divvy | Chicago, IL | ORD | Yes
+| Hubway | Boston, MA | BOS | Yes
+| Melbourne Bike Share| Melbourne, Vic | MEL | Yes
+| Montreal Bixi | Montreal, QC | YUL | Yes
+| Nice Ride | Minneapolis, MN| MSP | Yes
+| Ottawa Bixi | Ottawa, Ont| YOW | No
+| Pronto Cycle Share | Seattle, WA| SEA | No
+| Toronto Bixi |Toronto, Ont | YYZ | Yes
 
 # goal
 While every Bike Share program has a live JSON or XML feed, the data is presented differently thus making a universal bike share app difficult to create. This project aims to provide a easy-to-use solution for all bike-share data queries from around the world.
