@@ -125,5 +125,31 @@
     loc: {type: "Point", coordinates: [43.653226, -79.383184]}
     url: 'http://www.bikesharetoronto.com/stations/json'
   }
+  {
+    name: 'Pronto Cycle Share'
+    id: 'SEA'
+    city: 'Seattle'
+    state: 'Washington'
+    country: 'USA'
+    loc: {type: "Point", coordinates: [47.6097, -122.3331]}
+    url: 'https://secure.prontocycleshare.com/data/stations.json'
+  }
+  {
+    name: 'Citi Bike'
+    id: 'MIA'
+    city: 'Miami'
+    state: 'Florida'
+    country: 'USA'
+    loc: {type: "Point", coordinates: [25.7753, -80.2089]}
+    url: 'http://citibikemiami.com/downtown-miami-locations.xml'
+  }
+  {
+    name: 'Deco Bike'
+    id: 'SD'
+    city: 'San Diego'
+    state: 'California'
+    country: 'USA'
+    loc: {type: "Point", coordinates: [32.7150, -117.1625]}
+    url: 'http://www.decobike.com/sandiego/playmoves.xml'
+  }
 ]
-
