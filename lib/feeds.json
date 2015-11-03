@@ -1,1 +1,243 @@
-[{"name":"Aspen WE-cycle","id":"ASE","city":"Aspen","state":"Colorado","country":"USA","loc":{"type":"Point","coordinates":[39.1922,-106.8244]},"url":"https://www.we-cycle.org/pbsc/stations.php"},{"name":"Bay Area Bike Share","id":"SFO","city":"San Francisco","state":"California","country":"USA","loc":{"type":"Point","coordinates":[37.774929,-122.419416]},"url":"http://bayareabikeshare.com/stations/json"},{"name":"Divvy","id":"ORD","city":"Chicago","state":"Illinois","country":"USA","loc":{"type":"Point","coordinates":[41.878114,-87.629798]},"url":"http://www.divvybikes.com/stations/json"},{"name":"Hubway","id":"BOS","city":"Boston","state":"Massachusetts","country":"USA","loc":{"type":"Point","coordinates":[42.358431,-71.059773]},"url":"http://www.thehubway.com/data/stations/bikeStations.xml"},{"name":"Melbourne Bike Share","id":"MEL","city":"Melbourne","state":"Victoria","country":"Australia","loc":{"type":"Point","coordinates":[-37.814107,144.96328]},"url":"http://www.melbournebikeshare.com.au/stationmap/data"},{"name":"Citi Bike","id":"JFK","city":"New York City","state":"New York","country":"USA","loc":{"type":"Point","coordinates":[40.712784,-74.005941]},"url":"http://citibikenyc.com/stations/json"},{"name":"Bike Chattanooga","id":"CHA","city":"Chattanooga","state":"Tennessee","country":"USA","loc":{"type":"Point","coordinates":[35.04563,-85.30968]},"url":"http://www.bikechattanooga.com/stations/json"},{"name":"CoGo","id":"CMH","city":"Columbus","state":"Ohio","country":"USA","loc":{"type":"Point","coordinates":[39.961176,-82.998794]},"url":"http://cogobikeshare.com/stations/json"},{"name":"Montreal Bixi","id":"YUL","city":"Montreal","state":"Quebec","country":"Canada","loc":{"type":"Point","coordinates":[45.50867,-73.553992]},"url":"http://montreal.bixi.com/data/bikeStations.xml"},{"name":"Ottawa Bixi","id":"YOW","city":"Ottawa","state":"Ontario","country":"Canada","loc":{"type":"Point","coordinates":[45.42153,-75.697193]},"url":"http://capital.bixi.com/data/bikeStations.xml"},{"name":"Capital Bike Share","id":"DCA","city":"Washington","state":"DC","country":"USA","loc":{"type":"Point","coordinates":[38.907192,-77.036871]},"url":"http://www.capitalbikeshare.com/data/stations/bikeStations.xml"},{"name":"Nice Ride","id":"MSP","city":"Minneapolis","state":"Minnesota","country":"USA","loc":{"type":"Point","coordinates":[44.983334,-93.26667]},"url":"http://secure.niceridemn.org/data2/bikeStations.xml"},{"name":"Barclay's Cycle Hire","id":"LHR","city":"London","state":"London","country":"UK","loc":{"type":"Point","coordinates":[51.507351,-0.127758]},"url":"http://www.tfl.gov.uk/tfl/syndication/feeds/cycle-hire/livecyclehireupdates.xml"},{"name":"Toronto Bixi","id":"YYZ","city":"Toronto","state":"Ontraio","country":"Canada","loc":{"type":"Point","coordinates":[43.653226,-79.383184]},"url":"http://www.bikesharetoronto.com/stations/json"}]
+[ { "name": "Aspen WE-cycle"
+  , "id": "ASE"
+  , "city": "Aspen"
+  , "state": "Colorado"
+  , "country": "USA"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 39.1922
+      , -106.8244
+      ]
+    }
+  , "url": "https://www.we-cycle.org/pbsc/stations.php"
+  }
+, { "name": "Bay Area Bike Share"
+  , "id": "SFO"
+  , "city": "San Francisco"
+  , "state": "California"
+  , "country": "USA"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 37.774929
+      , -122.419416
+      ]
+    }
+  , "url": "http://bayareabikeshare.com/stations/json"
+  }
+, { "name": "Divvy"
+  , "id": "ORD"
+  , "city": "Chicago"
+  , "state": "Illinois"
+  , "country": "USA"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 41.878114
+      , -87.629798
+      ]
+    }
+  , "url": "http://www.divvybikes.com/stations/json"
+  }
+, { "name": "Hubway"
+  , "id": "BOS"
+  , "city": "Boston"
+  , "state": "Massachusetts"
+  , "country": "USA"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 42.358431
+      , -71.059773
+      ]
+    }
+  , "url": "http://www.thehubway.com/data/stations/bikeStations.xml"
+  }
+, { "name": "Melbourne Bike Share"
+  , "id": "MEL"
+  , "city": "Melbourne"
+  , "state": "Victoria"
+  , "country": "Australia"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ -37.814107
+      , 144.96328
+      ]
+    }
+  , "url": "http://www.melbournebikeshare.com.au/stationmap/data"
+  }
+, { "name": "Citi Bike"
+  , "id": "JFK"
+  , "city": "New York City"
+  , "state": "New York"
+  , "country": "USA"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 40.712784
+      , -74.005941
+      ]
+    }
+  , "url": "http://citibikenyc.com/stations/json"
+  }
+, { "name": "Bike Chattanooga"
+  , "id": "CHA"
+  , "city": "Chattanooga"
+  , "state": "Tennessee"
+  , "country": "USA"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 35.04563
+      , -85.30968
+      ]
+    }
+  , "url": "http://www.bikechattanooga.com/stations/json"
+  }
+, { "name": "CoGo"
+  , "id": "CMH"
+  , "city": "Columbus"
+  , "state": "Ohio"
+  , "country": "USA"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 39.961176
+      , -82.998794
+      ]
+    }
+  , "url": "http://cogobikeshare.com/stations/json"
+  }
+, { "name": "Montreal Bixi"
+  , "id": "YUL"
+  , "city": "Montreal"
+  , "state": "Quebec"
+  , "country": "Canada"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 45.50867
+      , -73.553992
+      ]
+    }
+  , "url": "http://montreal.bixi.com/data/bikeStations.xml"
+  }
+, { "name": "Ottawa Bixi"
+  , "id": "YOW"
+  , "city": "Ottawa"
+  , "state": "Ontario"
+  , "country": "Canada"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 45.42153
+      , -75.697193
+      ]
+    }
+  , "url": "http://capital.bixi.com/data/bikeStations.xml"
+  , "active": false
+  }
+, { "name": "Capital Bike Share"
+  , "id": "DCA"
+  , "city": "Washington"
+  , "state": "DC"
+  , "country": "USA"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 38.907192
+      , -77.036871
+      ]
+    }
+  , "url": "http://www.capitalbikeshare.com/data/stations/bikeStations.xml"
+  }
+, { "name": "Nice Ride"
+  , "id": "MSP"
+  , "city": "Minneapolis"
+  , "state": "Minnesota"
+  , "country": "USA"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 44.983334
+      , -93.26667
+      ]
+    }
+  , "url": "http://secure.niceridemn.org/data2/bikeStations.xml"
+  }
+, { "name": "Barclay's Cycle Hire"
+  , "id": "LHR"
+  , "city": "London"
+  , "state": "London"
+  , "country": "UK"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 51.507351
+      , -0.127758
+      ]
+    }
+  , "url": "http://www.tfl.gov.uk/tfl/syndication/feeds/cycle-hire/livecyclehireupdates.xml"
+  }
+, { "name": "Toronto Bixi"
+  , "id": "YYZ"
+  , "city": "Toronto"
+  , "state": "Ontraio"
+  , "country": "Canada"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 43.653226
+      , -79.383184
+      ]
+    }
+  , "url": "http://www.bikesharetoronto.com/stations/json"
+  }
+, { "name": "Pronto Cycle Share"
+  , "id": "SEA"
+  , "city": "Seattle"
+  , "state": "Washington"
+  , "country": "USA"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 47.6097
+      , -122.3331
+      ]
+    }
+  , "url": "https://secure.prontocycleshare.com/data/stations.json"
+  , "active": false
+  }
+, { "name": "Citi Bike"
+  , "id": "MIA"
+  , "city": "Miami"
+  , "state": "Florida"
+  , "country": "USA"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 25.7753
+      , -80.2089
+      ]
+    }
+  , "url": "http://citibikemiami.com/downtown-miami-locations.xml"
+  , "active": false
+  }
+, { "name": "Deco Bike"
+  , "id": "SAN"
+  , "city": "San Diego"
+  , "state": "California"
+  , "country": "USA"
+  , "loc":
+    { "type": "Point"
+    , "coordinates":
+      [ 32.715
+      , -117.1625
+      ]
+    }
+  , "url": "http://www.decobike.com/sandiego/playmoves.xml"
+  , "active": false
+  }
+]

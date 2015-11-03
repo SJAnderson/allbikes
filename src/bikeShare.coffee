@@ -18,7 +18,7 @@ open = (next) -> db.open next
 # arrange URLs into array
 prepareResources = (db, done) ->
   async.waterfall [
-    (next) -> db.collection('feeds').find {}, next
+    (next) -> db.collection('feeds').find {'active':{$ne:false}}, next
     (data, next) -> data.toArray next
   ], (err, cities) ->
     urls = ({url, id} for {url, id} in cities)
@@ -200,4 +200,3 @@ module.exports =
     ], (err, stations) ->
       return res.send {error: "Database error - #{err}"} if err
       res.send stations
-

@@ -55,7 +55,7 @@
     "repository": "https://github.com/SJAnderson/allbikes",
     "scripts": {
         "prepublish": "cake build",
-        "test": "vows test/test.js"
+        "test": "vows test/test.js --spec"
     },
     "version": "0.2.0"
 }

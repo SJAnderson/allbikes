@@ -88,6 +88,7 @@
     country: 'Canada'
     loc: {type: "Point", coordinates: [45.421530, -75.697193]}
     url: 'http://capital.bixi.com/data/bikeStations.xml'
+    active: false
   }
   {
     name: 'Capital Bike Share'
@@ -133,6 +134,7 @@
     country: 'USA'
     loc: {type: "Point", coordinates: [47.6097, -122.3331]}
     url: 'https://secure.prontocycleshare.com/data/stations.json'
+    active: false
   }
   {
     name: 'Citi Bike'
@@ -142,14 +144,16 @@
     country: 'USA'
     loc: {type: "Point", coordinates: [25.7753, -80.2089]}
     url: 'http://citibikemiami.com/downtown-miami-locations.xml'
+    active: false
   }
   {
     name: 'Deco Bike'
-    id: 'SD'
+    id: 'SAN'
     city: 'San Diego'
     state: 'California'
     country: 'USA'
     loc: {type: "Point", coordinates: [32.7150, -117.1625]}
     url: 'http://www.decobike.com/sandiego/playmoves.xml'
+    active: false
   }
 ]
