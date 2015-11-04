@@ -5,7 +5,7 @@ allbikes is an API that provides live station information for Bixi-built Bike Sh
 Stations currently supported and their respective API reference codes (city code).
 
 | Bike Share | City | city_id | Active
-| ----- | ------ |------ |
+| ------ | ------ | ------ | ------ |
 | Aspen WE-cycle | Aspen, CO | ASE | Yes
 | Barclay's Cycle Hire | London, UK| LHR | Yes
 | Bay Area Bike Share | San Francisco, CA | SFO | Yes
