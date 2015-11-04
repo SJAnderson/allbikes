@@ -46,12 +46,12 @@ remapLatLong = (station) ->
 
 remapProperty = (station, primary, secondary) ->
   a = 0
-  while secondary < secondary.length
+  while a < secondary.length
     if station[secondary[a]]
       if primary is 'name'
         station[primary] = station[secondary[a]]
       else
-        station[primary] = parseInt station[secondary[a]] or 0
+        station[primary] = parseInt station[secondary[a]] or 0, 10
         delete station[secondary[a]]
       break
     a++

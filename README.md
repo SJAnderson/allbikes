@@ -12,16 +12,16 @@ Stations currently supported and their respective API reference codes (city code
 | Bike Chattanooga | Chattanooga, TN | CHA | Yes
 | Capital Bike Share | Washington, D.C.| DCA | Yes
 | Citi Bike | New York City, NY | JFK | Yes
-| Citi Bike | Miami, FL| MIA | No
+| Citi Bike | Miami, FL| MIA | Yes
 | CoGo | Columbus, OH | CMH | Yes
-| Deco Bike | San Diego, CA| SAN | No
+| Deco Bike | San Diego, CA| SAN | Yes
 | Divvy | Chicago, IL | ORD | Yes
 | Hubway | Boston, MA | BOS | Yes
 | Melbourne Bike Share| Melbourne, Vic | MEL | Yes
 | Montreal Bixi | Montreal, QC | YUL | Yes
 | Nice Ride | Minneapolis, MN| MSP | Yes
 | Ottawa Bixi | Ottawa, Ont| YOW | No
-| Pronto Cycle Share | Seattle, WA| SEA | No
+| Pronto Cycle Share | Seattle, WA| SEA | Yes
 | Toronto Bixi |Toronto, Ont | YYZ | Yes
 
 # goal

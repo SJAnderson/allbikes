@@ -54,8 +54,7 @@ module.exports =
         parseJSON = ->
           try
             body = JSON.parse body
-            {stationBeanList} = body
-            body = stationBeanList if stationBeanList
+            body = body.stationBeanList or body.stations or body
             body = addCity()
             return next null, body
           catch err
@@ -63,7 +62,10 @@ module.exports =
 
         parseXML = ->
           parser.parseString body, (err, result) ->
-            body = result.stations.station
+            if result.stations and result.stations.station
+              body = result.stations.station
+            else if result.locations and result.locations.location
+              body = result.locations.location
             body = addCity()
             next null, body
 
