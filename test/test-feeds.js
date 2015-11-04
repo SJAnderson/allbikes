@@ -14,20 +14,25 @@
     testPerIteration: true
   });
 
-  describe('Test Feeds', function() {
+  describe('Test Active Feeds', function() {
     it('should have feeds', function(done) {
       assert(true, !!feeds.length);
       done();
     });
     it.each(feeds, 'Testing feed for %s', ['id'], function(city, next) {
-      utils.get(city, function(err, result) {
-        if (!result) {
-          assert.fail(err, 'result');
-        } else {
-          assert(true, !!result);
-        }
-        next();
-      });
+      if (typeof city.active !== 'undefined' && city.active === false) {
+        assert(true, true, 'Skipping Not Active');
+        return next();
+      } else {
+        utils.get(city, function(err, result) {
+          if (!result) {
+            assert.fail(err, 'result');
+          } else {
+            assert(true, !!result);
+          }
+          return next();
+        });
+      }
     });
   });
 
