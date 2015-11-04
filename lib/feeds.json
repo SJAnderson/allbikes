@@ -208,7 +208,6 @@
       ]
     }
   , "url": "https://secure.prontocycleshare.com/data/stations.json"
-  , "active": false
   }
 , { "name": "Citi Bike"
   , "id": "MIA"
@@ -223,7 +222,6 @@
       ]
     }
   , "url": "http://citibikemiami.com/downtown-miami-locations.xml"
-  , "active": false
   }
 , { "name": "Deco Bike"
   , "id": "SAN"
@@ -238,6 +236,5 @@
       ]
     }
   , "url": "http://www.decobike.com/sandiego/playmoves.xml"
-  , "active": false
   }
 ]
