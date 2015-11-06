@@ -32,7 +32,7 @@ module.exports =
     dist = Math.acos(dist)
     dist *= 180 / Math.PI
     dist *= 60 * 1.1515
-    dist *= 1609.344
+    dist *= 1.609344
     return Math.floor dist
 
   get: (resource, done) ->
