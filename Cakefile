@@ -13,13 +13,21 @@ task 'build', 'Build project from src/*.coffee to lib/*.js', ->
       throw err if err
       console.log 'test.js removed from lib...'
 
+    exec 'rm -f lib/test-feeds.js', (err, stdout, stderr) ->
+      throw err if err
+      console.log 'test-feeds.js removed from lib...'
+
   exec 'coffee --compile --output ./ src/app.coffee', (err, stdout, stderr) ->
     throw err if err
     console.log 'app.js placed in lib...'
 
   exec 'coffee --compile --output test/ src/test.coffee', (err, stdout, stderr) ->
     throw err if err
-    console.log 'test.js placed in lib...'
+    console.log 'test.js placed in test...'
+
+  exec 'coffee --compile --output test/ src/test-feeds.coffee', (err, stdout, stderr) ->
+    throw err if err
+    console.log 'test-feeds.js placed in test...'
 
   exec 'cson2json src/config.cson > lib/config.json', (err, stdout, stderr) ->
     throw err if err

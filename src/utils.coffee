@@ -32,8 +32,9 @@ module.exports =
     dist = Math.acos(dist)
     dist *= 180 / Math.PI
     dist *= 60 * 1.1515
-    dist *= 1609.344
-    return Math.floor dist
+    distance =
+        'mi': Math.floor dist
+        'km': Math.floor dist * 1.609344
 
   get: (resource, done) ->
     {url, id} = resource
@@ -54,8 +55,7 @@ module.exports =
         parseJSON = ->
           try
             body = JSON.parse body
-            {stationBeanList} = body
-            body = stationBeanList if stationBeanList
+            body = body.stationBeanList or body.stations or body
             body = addCity()
             return next null, body
           catch err
@@ -63,7 +63,10 @@ module.exports =
 
         parseXML = ->
           parser.parseString body, (err, result) ->
-            body = result.stations.station
+            if result.stations and result.stations.station
+              body = result.stations.station
+            else if result.locations and result.locations.location
+              body = result.locations.location
             body = addCity()
             next null, body
 
@@ -104,5 +107,21 @@ module.exports =
     'testStation'
     'terminalName'
     'temporary'
+    'Address'
+    'Id'
+    'Distance'
+    'StationAdList'
+    's'
+    'n'
+    'st'
+    'b'
+    'su'
+    'm'
+    'lu'
+    'lc'
+    'bk'
+    'bl'
+    'lo'
+    'dx'
+    'bx'
   ]
-

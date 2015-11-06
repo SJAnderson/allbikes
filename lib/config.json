@@ -1,1 +1,9 @@
-{"mongo":{"host":"localhost","port":27017},"statusKey":{"inService":1,"notInService":3}}
+{ "mongo":
+  { "host": "localhost"
+  , "port": 27017
+  }
+, "statusKey":
+  { "inService": 1
+  , "notInService": 3
+  }
+}

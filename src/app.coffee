@@ -2,6 +2,7 @@
 bodyParser = require 'body-parser'
 express = require 'express'
 morgan = require 'morgan'
+http = require 'http'
 
 # utilities
 bikeShare = require './lib/bikeShare.js'
@@ -30,7 +31,10 @@ middleware = [
 ]
 
 app = express()
-app.get point, action for point, action of endpoints
+
+app.set "port", process.env.PORT or 8080
 app.use ware for ware in middleware
-app.listen 8080
-console.log 'server running'
+app.get point, action for point, action of endpoints
+
+http.createServer(app).listen app.get("port"), ->
+  console.log "Express server listening on port " + app.get("port")
